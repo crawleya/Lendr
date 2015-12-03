@@ -49,6 +49,18 @@ if (!isset($_SESSION['user_id'])) {
                  
                 </div><!-- user_table -->
             </fieldset>
+
+            <fieldset class="field_container">
+                <legend> Found Items </legend>
+                <div id="item_table">
+                    <?php 
+                        //call borrowed_list.php to create list of recipes
+                        if (isset($_POST['itemname'])) include('search_list.php'); 
+                    ?>
+                </div><!-- user_table -->
+            </fieldset>
+
+
 			<br></br>
         </div><!-- content -->    
     </div><!-- container -->
