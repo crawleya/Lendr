@@ -32,7 +32,7 @@ $user_id = $_SESSION['user_id'];
 		}
 
 		//bind paramater search statement
-		$search = '%' . $_POST['itemname'] . '%';
+		$search = '%' . $_REQUEST['itemname'] . '%';
 		if (!($stmt->bind_param("s",$search))) {
 			die("bind parameter failed in item_list first query: (" . $mysqli->errno . ") " . $mysqli->error);
 		}

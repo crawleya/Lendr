@@ -41,10 +41,10 @@ if (!isset($_SESSION['user_id'])) {
                 <legend> Search for items </legend>
                 <div id="search_for">
                    
-                        <form action="search.php"  method="POST">
+                        <form action="search.php"  method="GET">
                           Item Name:</br>
                          <input type="text" name="itemname" value=""></br></br>
-                          <button class="frm_button" name="search" value="Search" type="search">Search</button>
+                          <button class="frm_button" type="search">Search</button>
                         </form>
                  
                 </div><!-- user_table -->
@@ -55,7 +55,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div id="item_table">
                     <?php 
                         //call borrowed_list.php to create list of recipes
-                        if (isset($_POST['itemname'])) include('search_list.php'); 
+                        if (isset($_REQUEST['itemname'])) include('search_list.php'); 
                     ?>
                 </div><!-- user_table -->
             </fieldset>
