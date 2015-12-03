@@ -8,7 +8,8 @@ $user_id = $_SESSION['user_id'];
 <table class="item_list" cellspacing="2" cellpadding="0">
     <tr class="bg_h">
         <th class="tbl_entry">Item Name</th>
-        <!--<th class="tbl_entry">Owner</th>-->
+        <th class="tbl_entry">Owner</th>
+        <th class="tbl_entry">Currently Borrowed By</th>
         <th class="tbl_entry">Borrow</th>
     </tr>
     <?php
@@ -23,7 +24,10 @@ $user_id = $_SESSION['user_id'];
 		}
 		
 		//prepare search statement
-		if (!($stmt = $mysqli->prepare("SELECT name FROM Item WHERE name LIKE ? "))) {
+		if (!($stmt = $mysqli->prepare("SELECT i.id, i.name, o.id as ownerid, o.username as ownername, b.id as borrowid, b.username as borrowname FROM Item i 
+			inner join User o on i.owner_id = o.id 
+			inner join User b on i.borrower_id = b.id 
+			where i.name LIKE ? "))) {
 			die("Prepare statement failed in item_list first query: (" . $mysqli->errno . ") " . $mysqli->error);
 		}
 
@@ -39,7 +43,7 @@ $user_id = $_SESSION['user_id'];
 		}
         
 		//bind results to php variables
-		if (!$stmt->bind_result($item_name)) {
+		if (!$stmt->bind_result($item_id,$item_name,$ownerid,$ownername,$borrowid,$borrowname)) {
 			die("Bind failed in item_list first query: (" . $stmt->errno . ") " . $stmt->error);
 		}
 		
@@ -49,7 +53,15 @@ $user_id = $_SESSION['user_id'];
 			?>
 			<tr class="<?php echo $bg; ?>">
 				<td class="tbl_entry"><?php echo $item_name; ?></td>
-				<td class="tbl_entry"></td>				
+				<td class="tbl_entry"><?php echo $ownername; ?></td>
+				<td class="tbl_entry"><?php if($ownerid != $borrowid)echo $borrowname; ?></td>
+				<td class="tbl_entry"><?php if($ownerid == $borrowid){
+					echo "not yet borrowed";
+					//borrow code here
+				}
+				?></td>
+
+
 			</tr>
 			<?php
 			if ($bg == 'bg_1') {
