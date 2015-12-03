@@ -55,7 +55,7 @@ $user_id = $_SESSION['user_id'];
 				<td class="tbl_entry"><?php echo $item_name; ?></td>
 				<td class="tbl_entry"><?php echo $ownername; ?></td>
 				<td class="tbl_entry"><?php if($ownerid != $borrowid)echo $borrowname; ?></td>
-				<td class="tbl_entry"><?php if($ownerid == $borrowid){
+				<td class="tbl_entry"><?php if($ownerid == $borrowid && $ownerid != $_SESSION['user_id']){
 					echo "
 							<form action=\"borrow.php\" method=\"POST\">
 								<input type=\"hidden\" name=\"item_id\" value=\"$item_id\">
