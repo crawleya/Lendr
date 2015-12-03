@@ -13,6 +13,12 @@ if (!isset($_SESSION['user_id'])) {
   header("Location: {$redirect}/login.php?{$getparams}", true);
   exit();
 }
+
+
+$search = "";
+$onlyborrowable = "";
+if(isset($_REQUEST['itemname'])) $search = $_REQUEST['itemname'];
+if(isset($_REQUEST['onlyborrowable'])) $onlyborrowable = "checked";
 ?>
 
 <html>
@@ -43,8 +49,8 @@ if (!isset($_SESSION['user_id'])) {
                    
                         <form action="search.php"  method="GET">
                           Item Name:</br>
-                         <input type="text" name="itemname" value="">
-                         <input type="checkbox" name="onlyborrowable" value="True"> Only Show Borrowable Items
+                         <input type="text" name="itemname" <?php echo "value=\"$search\""; ?> >
+                         <input type="checkbox" name="onlyborrowable" value="True"  <?php echo $onlyborrowable; ?> > Only Show Borrowable Items
                          </br></br>
                           <button class="frm_button" type="search">Search</button>
                         </form>

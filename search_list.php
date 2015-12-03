@@ -9,7 +9,7 @@ $user_id = $_SESSION['user_id'];
     <tr class="bg_h">
         <th class="tbl_entry">Item Name</th>
         <th class="tbl_entry">Owner</th>
-        <th class="tbl_entry">Currently Borrowed By</th>
+        <?php if (!isset($_REQUEST['onlyborrowable'])) echo "<th class=\"tbl_entry\">Currently Borrowed By</th>"; ?>
         <th class="tbl_entry">Borrow</th>
     </tr>
     <?php
@@ -58,7 +58,11 @@ $user_id = $_SESSION['user_id'];
 			<tr class="<?php echo $bg; ?>">
 				<td class="tbl_entry"><?php echo $item_name; ?></td>
 				<td class="tbl_entry"><?php echo $ownername; ?></td>
-				<td class="tbl_entry"><?php if($ownerid != $borrowid)echo $borrowname; ?></td>
+				<?php
+				if (!isset($_REQUEST['onlyborrowable']))  echo "<td class=\"tbl_entry\">"; 
+				if($ownerid != $borrowid)echo $borrowname; ?>
+
+				</td>
 				<td class="tbl_entry"><?php if($ownerid == $borrowid && $ownerid != $_SESSION['user_id']){
 					echo "
 							<form action=\"borrow.php\" method=\"POST\">
