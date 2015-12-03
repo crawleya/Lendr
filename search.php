@@ -1,50 +1,56 @@
-<?php 
-//ini_set('display_errors', 'On');
+<?php
+//error reporting. comment out once code is working
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+//start session to check for valid login. if not, redirect to login page
 session_start();
-include "stored_info.php"; //contains db_host/db_user/db_pass/db_db
-
-if (isset($_POST['checkout'])){
-
-	
-
+//$_SESSION['user_id'] = 5; //For testing only prior to login page creation
+if (!isset($_SESSION['user_id'])) {
+  $path = explode('/', $_SERVER['PHP_SELF'], -1);
+  $path = implode('/',$path);
+  $redirect = "http://" . $_SERVER['HTTP_HOST'] . $path;
+  $getparams = "backto=" . urlencode($_SERVER['REQUEST_URI']) ;
+  header("Location: {$redirect}/login.php?{$getparams}", true);
+  exit();
 }
+?>
 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lendr</title>
+<link rel="stylesheet" href="css/final-style.css" />
+<script type="text/javascript" src="js/final-jscript.js"></script>
+</head>
 
-if( !isset($_POST['itemname']) || !$_POST['itemname'] ){
-    displayform("you must enter a search term");
-}
+<body>
+    <div class="container">
+        <div class="header">
+        </div><!-- header -->
+        <h1 class="main_title">Welcome to Lendr
 
-$ourItem = $_POST['itemname'];
+        <form action="login.php" method="POST" class="logout_form">
+          <button class="logout_button" name="request" value="logout" type="submit">Logout</button>
+        </form> 
 
-$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_db);
-if ($mysqli->connect_errno || $mysqli->connect_error)
-{
-   displayform("Server Databse Error"); 
-}
+        </h1>
 
-
-$sql = "SELECT name FROM Item WHERE name LIKE '%$ourItem%' ";
-$result = $mysqli->query($sql);
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "found item: " . $row["name"] . "<br>";
-        if (isset($row["borrower_id"])){
-        	echo "item is already checked out." . "<br>";
-        }
-        else{
-        	echo "item is available. check out?" . "<br>";
-        	?><form action="search.php"  method="POST">
-                         
-                        <input type="radio" name="checkout" value="yes" checked> yes
-						<br>
-						<input type="radio" name="checkout" value="no"> no
-            </form><?php
-        }
-    }
-} else {
-    echo "Item not found";
-}
-
-
-
+        <div class="content">
+            <br></br>
+			<fieldset class="field_container">
+                <legend> Search for items </legend>
+                <div id="search_for">
+                   
+                        <form action="search.php"  method="POST">
+                          Item Name:</br>
+                         <input type="text" name="itemname" value=""></br></br>
+                          <button class="frm_button" name="search" value="Search" type="search">Search</button>
+                        </form>
+                 
+                </div><!-- user_table -->
+            </fieldset>
+			<br></br>
+        </div><!-- content -->    
+    </div><!-- container -->
+</body>
+</html>
