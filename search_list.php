@@ -56,10 +56,18 @@ $user_id = $_SESSION['user_id'];
 				<td class="tbl_entry"><?php echo $ownername; ?></td>
 				<td class="tbl_entry"><?php if($ownerid != $borrowid)echo $borrowname; ?></td>
 				<td class="tbl_entry"><?php if($ownerid == $borrowid){
-					echo "not yet borrowed";
-					//borrow code here
+					echo "
+							<form action=\"borrow.php\" method=\"POST\">
+								<input type=\"hidden\" name=\"item_id\" value=\"$item_id\">
+								<input type=\"hidden\" name=\"itemname\" value=\"{$_REQUEST['itemname']}\">
+								<button type=\"submit\">Borrow Item</button>
+							</form>
+
+					";
 				}
 				?></td>
+
+
 
 
 			</tr>
