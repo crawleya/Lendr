@@ -23,17 +23,21 @@ $user_id = $_SESSION['user_id'];
 			die("Failed to connect to MySQL in item_list first query: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
 		}
 		
+		if (isset($_REQUEST['onlyborrowable'])) $only_borrowable = " && i.owner_id = i.borrower_id";
+		else $only_borrowable = "";
+
 		//prepare search statement
 		if (!($stmt = $mysqli->prepare("SELECT i.id, i.name, o.id as ownerid, o.username as ownername, b.id as borrowid, b.username as borrowname FROM Item i 
 			inner join User o on i.owner_id = o.id 
 			inner join User b on i.borrower_id = b.id 
-			where i.name LIKE ? "))) {
+			where i.name LIKE ? && i.owner_id != ?" . $only_borrowable))) {
 			die("Prepare statement failed in item_list first query: (" . $mysqli->errno . ") " . $mysqli->error);
 		}
 
 		//bind paramater search statement
 		$search = '%' . $_REQUEST['itemname'] . '%';
-		if (!($stmt->bind_param("s",$search))) {
+		//if (!($stmt->bind_param("s",$search))) {
+		if (!($stmt->bind_param("si",$search,$_SESSION['user_id']))) {
 			die("bind parameter failed in item_list first query: (" . $mysqli->errno . ") " . $mysqli->error);
 		}
 		

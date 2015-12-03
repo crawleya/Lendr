@@ -43,7 +43,9 @@ if (!isset($_SESSION['user_id'])) {
                    
                         <form action="search.php"  method="GET">
                           Item Name:</br>
-                         <input type="text" name="itemname" value=""></br></br>
+                         <input type="text" name="itemname" value="">
+                         <input type="checkbox" name="onlyborrowable" value="True"> Only Show Borrowable Items
+                         </br></br>
                           <button class="frm_button" type="search">Search</button>
                         </form>
                  
