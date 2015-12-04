@@ -19,15 +19,13 @@
 		if (isset($_REQUEST['onlyborrowable'])) $only_borrowable = " && i.owner_id = i.borrower_id";
 		else $only_borrowable = "";
 
-		if (isset($_REQUEST['grouplist'])) {
-			$groups = $_REQUEST['grouplist'];
-			if (in_array("Notspecified", $groups))
-				$groupselected = "";
-			else
-				$groupselected = " AND i.owner_id IN (SELECT DISTINCT user_id FROM User_to_Group WHERE group_id IN (" . implode(", ", $groups) . "))";
-		}
-		else {
+		#if (isset($_REQUEST['grouplist'])) {
+		#	$groups = $_REQUEST['grouplist'];
+		if (!isset($_REQUEST['grouplist'])){
 			$groupselected = "";
+		}
+		else{
+			$groupselected = " AND i.owner_id IN (SELECT DISTINCT user_id FROM User_to_Group WHERE group_id IN (" . implode(", ", $_REQUEST['grouplist']) . "))";
 		}
 		//prepare search statement
 		/*

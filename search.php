@@ -53,10 +53,13 @@ if(isset($_REQUEST['onlyborrowable'])) $onlyborrowable = "checked";
       							</td></tr>
       							<tr><td>
       							<input type="text" name="itemname" <?php echo "value=\"$search\""; ?> >
-      							<input type="checkbox" name="onlyborrowable" value="True"  <?php echo $onlyborrowable; ?> > Only Show Borrowable Items
+                    </td></tr>
+                    <tr><td>
+      							<br><input type="checkbox" name="onlyborrowable" value="True"  <?php echo $onlyborrowable; ?> > Only Show Borrowable Items
       							</td></tr>
       							<tr><td>
-      							<select name="grouplist[]" size="3" multiple><option selected value="Notspecified">Not specified</option><?php include('search_filter.php') ?></select> Only show items from the chosen groups
+                    <br>Only show items from the chosen groups
+                    <?php include('search_filter.php') ?>
       							</td></tr>
       							<tr><td>
       							<button class="frm_button" type="search">Search</button>

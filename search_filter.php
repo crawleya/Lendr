@@ -36,7 +36,8 @@ $user_id = $_SESSION['user_id'];
 
 	//output group name to the dropdown list
 	while($stmt->fetch()) {
-		echo "<option value=\"".$group_id."\">".$group_name."</option>";
+		#echo "<option value=\"".$group_id."\">".$group_name."</option>";
+		echo "<br><input type=\"checkbox\" name=\"grouplist[]\" value=\"".$group_id."\">".$group_name;
 	}
 	
 	//close statement
