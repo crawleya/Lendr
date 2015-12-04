@@ -1,10 +1,3 @@
-<?php
-//error reporting. comment out once code is working
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-$user_id = $_SESSION['user_id'];
-?>
-
 <table class="item_list" cellspacing="2" cellpadding="0">
     <tr class="bg_h">
         <th class="tbl_entry">Item Name</th>
@@ -26,11 +19,29 @@ $user_id = $_SESSION['user_id'];
 		if (isset($_REQUEST['onlyborrowable'])) $only_borrowable = " && i.owner_id = i.borrower_id";
 		else $only_borrowable = "";
 
+		if (isset($_REQUEST['grouplist'])) {
+			$groups = $_REQUEST['grouplist'];
+			if (in_array("Notspecified", $groups))
+				$groupselected = "";
+			else
+				$groupselected = " AND i.owner_id IN (SELECT DISTINCT user_id FROM User_to_Group WHERE group_id IN (" . implode(", ", $groups) . "))";
+		}
+		else {
+			$groupselected = "";
+		}
 		//prepare search statement
+		/*
 		if (!($stmt = $mysqli->prepare("SELECT i.id, i.name, o.id as ownerid, o.username as ownername, b.id as borrowid, b.username as borrowname FROM Item i 
 			inner join User o on i.owner_id = o.id 
 			inner join User b on i.borrower_id = b.id 
 			where i.name LIKE ? && i.owner_id != ?" . $only_borrowable))) {
+			die("Prepare statement failed in item_list first query: (" . $mysqli->errno . ") " . $mysqli->error);
+		}
+		*/
+		if (!($stmt = $mysqli->prepare("SELECT i.id, i.name, o.id AS ownerid, o.username AS ownername, b.id AS borrowid, b.username AS borrowname FROM Item i
+			INNER JOIN User o ON i.owner_id = o.id
+			INNER JOIN User b ON i.borrower_id = b.id
+			WHERE i.name LIKE ? && i.owner_id != ?" . $only_borrowable . $groupselected ))) {
 			die("Prepare statement failed in item_list first query: (" . $mysqli->errno . ") " . $mysqli->error);
 		}
 

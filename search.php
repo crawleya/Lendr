@@ -43,18 +43,26 @@ if(isset($_REQUEST['onlyborrowable'])) $onlyborrowable = "checked";
 
         <div class="content">
             <br></br>
-			<fieldset class="field_container">
+			      <fieldset class="field_container">
                 <legend> Search for items </legend>
                 <div id="search_for">
-                   
-                        <form action="search.php"  method="GET">
-                          Item Name:</br>
-                         <input type="text" name="itemname" <?php echo "value=\"$search\""; ?> >
-                         <input type="checkbox" name="onlyborrowable" value="True"  <?php echo $onlyborrowable; ?> > Only Show Borrowable Items
-                         </br></br>
-                          <button class="frm_button" type="search">Search</button>
-                        </form>
-                 
+                  <form action="search.php"  method="GET">
+      							<table>
+      							<tr><td>
+      							Item Name:
+      							</td></tr>
+      							<tr><td>
+      							<input type="text" name="itemname" <?php echo "value=\"$search\""; ?> >
+      							<input type="checkbox" name="onlyborrowable" value="True"  <?php echo $onlyborrowable; ?> > Only Show Borrowable Items
+      							</td></tr>
+      							<tr><td>
+      							<select name="grouplist[]" size="3" multiple><option selected value="Notspecified">Not specified</option><?php include('search_filter.php') ?></select> Only show items from the chosen groups
+      							</td></tr>
+      							<tr><td>
+      							<button class="frm_button" type="search">Search</button>
+      							</td></tr>
+      							</table>
+                  </form>
                 </div><!-- user_table -->
             </fieldset>
 
