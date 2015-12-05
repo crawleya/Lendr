@@ -9,7 +9,7 @@ $testcases = array();
     'expectedstate' => , ""
     'expectedid' => , ""
 );*/
-$testcases[0] = array(
+$testcases[] = array(
     'request' =>  "login",
     'username' => "Brandon",
     'password' =>  "Garbage",
@@ -17,14 +17,22 @@ $testcases[0] = array(
     'expectedstate' =>  "log in refused",
     'expectedid' =>  "Not Set",
 );
-$testcases[1] = array(
+$testcases[] = array(
     'request' =>  "login",
     'username' => "Brandon",
     'testname' =>  "Password not supplied",
     'expectedstate' =>  "log in refused",
     'expectedid' =>  "Not Set",
 );
-$testcases[2] = array(
+$testcases[] = array(
+    'request' =>  "login",
+    'username' =>  "nondefineduser",
+    'password' =>  "password",
+    'testname' =>  "Log in with username not in database",
+    'expectedstate' =>  "log in refused",
+    'expectedid' =>  "Not Set",
+);
+$testcases[] = array(
     'request' =>  "signup",
     'username' =>  "Brandon",
     'password' =>  "doesntmatter",
@@ -32,7 +40,7 @@ $testcases[2] = array(
     'expectedstate' =>  "Sign up refused",
     'expectedid' =>  "Not Set",
 );
-$testcases[3] = array(
+$testcases[] = array(
     'request' =>  "signup",
     'username' =>  "newuser",
     'password' =>  "",
@@ -40,14 +48,14 @@ $testcases[3] = array(
     'expectedstate' =>  "Sign up refused",
     'expectedid' =>  "Not Set",
 );
-$testcases[4] = array(
+$testcases[] = array(
     'username' =>  "newuser",
     'password' =>  "newpassword",
     'testname' =>  "No Request given",
     'expectedstate' =>  "Normal login page displayed",
     'expectedid' =>  "Not Set",
 );
-$testcases[5] = array(
+$testcases[] = array(
     'request' =>  "Garbage",
     'username' =>  "newuser",
     'password' =>  "newpassword",
@@ -55,7 +63,7 @@ $testcases[5] = array(
     'expectedstate' =>  "We cannot perform that action right now",
     'expectedid' =>  "Not Set",
 );
-$testcases[6] = array(
+$testcases[] = array(
     'request' =>  "login",
     'username' =>  "Brandon",
     'password' =>  "password",
