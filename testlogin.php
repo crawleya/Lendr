@@ -41,6 +41,21 @@ $testcases[3] = array(
     'expectedid' =>  "Not Set",
 );
 $testcases[4] = array(
+    'username' =>  "newuser",
+    'password' =>  "newpassword",
+    'testname' =>  "No Request given",
+    'expectedstate' =>  "Normal login page displayed",
+    'expectedid' =>  "Not Set",
+);
+$testcases[5] = array(
+    'request' =>  "Garbage",
+    'username' =>  "newuser",
+    'password' =>  "newpassword",
+    'testname' =>  "Non specified Request given",
+    'expectedstate' =>  "We cannot perform that action right now",
+    'expectedid' =>  "Not Set",
+);
+$testcases[6] = array(
     'request' =>  "login",
     'username' =>  "Brandon",
     'password' =>  "password",
