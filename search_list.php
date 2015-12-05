@@ -26,6 +26,14 @@
 		}
 		else{
 			$groupselected = " AND i.owner_id IN (SELECT DISTINCT user_id FROM User_to_Group WHERE group_id IN (" . implode(", ", $_REQUEST['grouplist']) . "))";
+		
+			#manual sql injection guard
+			foreach ($_REQUEST['grouplist'] as $value) {
+				if (!is_numeric($value)){
+					$groupselected = "";
+					break;
+				}
+			}
 		}
 		//prepare search statement
 		/*
