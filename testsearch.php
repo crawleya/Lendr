@@ -27,7 +27,15 @@ $testcases[] = array(
     'expectedstate' => "search is la    onlyborrowable is checked   garden tools group is selected"
 );
 
-/*$testcases[] = array(
+$testcases[] = array(
+    'fullpage' =>"true",
+    'user_id' =>  "23",
+    'searchquery' => "itemname=wheel",
+    'testname' => "Search queries filled in form 2",
+    'expectedstate' => "search is wheel"
+);
+
+$testcases[] = array(
     'user_id' =>  "23",
     'searchquery' => "itemname=la",
     'testname' => "search term only",
@@ -40,7 +48,27 @@ $testcases[] = array(
     'testname' => "Show Borrowable Only",
     'expectedstate' => "Lathe and Laser displayed, borrowed by collumn not shown, all shown items are borrowable"
 );
-*/
+
+$testcases[] = array(
+    'user_id' =>  "23",
+    'searchquery' => "itemname=la",
+    'testname' => "Users offered items not displayed (MrTester logged in)",
+    'expectedstate' => "Lathe, Laser, Ladder"
+);
+
+$testcases[] = array(
+    'user_id' =>  "9",
+    'searchquery' => "itemname=la",
+    'testname' => "Users offered items not displayed (Brandon logged in)",
+    'expectedstate' => "Lamp, Lasso, Ladder"
+);
+
+$testcases[] = array(
+    'user_id' =>  "4",
+    'searchquery' => "itemname=la",
+    'testname' => "Users offered items not displayed (Brandon and MrTester not loggedin)",
+    'expectedstate' => "Brandon and MrTesters items shown"
+);
 
 
  ?>
@@ -57,7 +85,7 @@ $testcases[] = array(
   #echo "<br><iframe src=\"testloginframe.php?request=login&username=Bob&password=Bob\"></iframe>";
 
   foreach ($testcases as $case) {
-      echo "<iframe class=\"testframe\" src=\"testsearchframe.php?";
+      echo "<iframe class=\"searchtestframe\" src=\"testsearchframe.php?";
       foreach ($case as $key => $value) {
           if ($key == 'searchquery') echo $value . "&";
           else echo "$key=$value&";
