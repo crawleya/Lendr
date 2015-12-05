@@ -67,16 +67,10 @@ if(isset($_REQUEST['onlyborrowable'])) $onlyborrowable = "checked";
                 </div><!-- user_table -->
             </fieldset>
 
-            <fieldset class="field_container">
-                <legend> Found Items </legend>
-                <div id="item_table">
-                    <?php 
-                        //call borrowed_list.php to create list of recipes
-                        if (isset($_REQUEST['itemname'])) include('search_list.php'); 
-                    ?>
-                </div><!-- user_table -->
-            </fieldset>
-
+            <?php 
+                //call borrowed_list.php to create list of recipes
+                if (isset($_REQUEST['itemname'])) include('search_list.php'); 
+            ?>
 
 			<br></br>
         </div><!-- content -->    

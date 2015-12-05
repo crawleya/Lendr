@@ -1,3 +1,6 @@
+<fieldset class="field_container">
+<legend> Found Items </legend>
+<div id="item_table">
 <table class="item_list" cellspacing="2" cellpadding="0">
     <tr class="bg_h">
         <th class="tbl_entry">Item Name</th>
@@ -108,3 +111,5 @@
 			die("Close 1 failed in item_list: (" . $stmt->errno . ") " . $stmt->error);}
 	?>
 </table>
+</div><!-- user_table -->
+</fieldset>
