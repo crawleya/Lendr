@@ -37,7 +37,7 @@ function displayform($message='')
 
     <?php
     if ($message){
-       echo" <div id=\"message\">
+       echo"<br> <div id=\"message\">
        $message
         </div> ";
     }
