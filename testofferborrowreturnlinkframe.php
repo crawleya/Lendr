@@ -12,6 +12,8 @@
 session_start();
 $_SESSION['user_id'] = $_GET['user_id'];
 
+echo "user {$_SESSION['user_id']} is now logged in <br>";
+
 
 if (isset($_GET['getparams'])) {
   $getparams = urldecode($_GET['getparams']);

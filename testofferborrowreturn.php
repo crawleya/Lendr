@@ -49,9 +49,8 @@ $getparams=urlencode("itemname=&grouplist%5B%5D=19");
 
 
 echo "<h3 class=\"testname\"> TEST: Borrow Item </h3>
-MissesTester is now logged in <br>
 
-<iframe class = \"offertestframe\" src = \"user_items.php\"></iframe>
+<iframe class = \"offertestframe\" src = \"testofferborrowreturnloginframe.php?user_id=24&link=user_items.php&linkname=See MissesTesters borrowed items\"></iframe>
 <div class=\"framefooter\"> 
 <span class=\"expectedstate\">Expected State:</span>
 <ul>
@@ -61,7 +60,6 @@ MissesTester is now logged in <br>
 
 <div class=\"frameheader\"> USER STEPS:
 <ul>
-<li> Log in MissesTester
 <li> Borrow MrTester's New Item
 </u>
  </div>
@@ -77,6 +75,41 @@ MissesTester is now logged in <br>
 ";
 
 $getparams ="";
+
+echo "<h3 class=\"testname\"> TEST: Track Borrowed Items </h3>
+
+<iframe class = \"offertestframe\" src = \"testofferborrowreturnloginframe.php?user_id=23&link=offer_item.php&linkname=See MrTesters offered items\"></iframe>
+<div class=\"framefooter\"> 
+<span class=\"expectedstate\">Expected State:</span>
+<ul>
+<li> MrTester's Newly offered item is listed as borroed by MissesTester
+</u>
+</div>
+
+<h3 class=\"testname\"> TEST: Return Items </h3>
+<div class=\"frameheader\"> USER STEPS:
+<ul>
+<li> Return The Item Borrowed from MrTester
+</u>
+ </div>
+<iframe class = \"offertestframe\" src = \"testofferborrowreturnloginframe.php?user_id=24&link=user_items.php&linkname=See MissesTesters borrowed items\"></iframe>
+<div class=\"framefooter\"> 
+<span class=\"expectedstate\">Expected State:</span>
+<ul>
+<li> MrTestr's new item displayed in list of MissesTesters borrowed items
+<li> after clicking return borrowed items list should be empty
+</u>
+</div>
+
+<iframe class = \"offertestframe\" src = \"testofferborrowreturnloginframe.php?user_id=23&link=offer_item.php&linkname=See MrTesters offered items\"></iframe>
+<div class=\"framefooter\"> 
+<span class=\"expectedstate\">Expected State:</span>
+<ul>
+<li> MrTester's new item should no longer be borrowed by MissesTester
+</u>
+</div>
+
+";
 
 
 ?>
