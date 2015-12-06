@@ -11,14 +11,6 @@
 session_start();
 $_SESSION['user_id'] = 23;
 
-// including the database credentials
-include('stored_info.php');
-//connect to database
-$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_db);
-if(!$mysqli || $mysqli->connect_errno) {
-  die("Failed to connect to MySQL in item_list first query: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
-}
-
 echo "<h3 class=\"testname\"> TEST: Offer a New Item </h3> 
 MrTester is currently logged in
 <div class=\"frameheader\"> USER STEPS:
@@ -112,7 +104,11 @@ echo "<h3 class=\"testname\"> TEST: Track Borrowed Items </h3>
 ";
 
 
+
 ?>
+
+<br>
+<iframe class = "offertestframe" src="testofferborrowreturndeleteitem.php"></iframe>
 
 </body>
 </html>
