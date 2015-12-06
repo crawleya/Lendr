@@ -44,8 +44,8 @@ if (!$stmt->close()) {
 }
 
 //successfully deleted task from to-do database. now regenerate user borrowed items table
-
-header("Location: search.php?itemname={$_POST['itemname']}", true);
+$redirect = "http://" . $_SERVER['HTTP_HOST'] . urldecode($_POST['backto']);
+header("Location: $redirect", true);
 die();
 
 ?>

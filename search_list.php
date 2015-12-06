@@ -84,8 +84,10 @@
 
 				</td>
 				<td class="tbl_entry"><?php if($ownerid == $borrowid && $ownerid != $_SESSION['user_id']){
+					$backto = urlencode($_SERVER['REQUEST_URI']);
 					echo "
 							<form action=\"borrow.php\" method=\"POST\">
+								<input type=\"hidden\" name=\"backto\" value=\"$backto\">
 								<input type=\"hidden\" name=\"item_id\" value=\"$item_id\">
 								<input type=\"hidden\" name=\"itemname\" value=\"{$_REQUEST['itemname']}\">
 								<button type=\"submit\">Borrow Item</button>
