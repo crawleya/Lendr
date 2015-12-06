@@ -9,7 +9,7 @@
 
 $getparams = urlencode($_GET['getparams']);
 
-echo "<a href= \"testofferborrowreturnlinkframe.php?user_id={$_GET['user_id']}&link={$_GET['link']}&getparams={$getparams}&linkname={$_GET['linkname']}\" \ > Log in user #{$_GET['user_id']} </a>";
+echo "<h2> <a href= \"testofferborrowreturnlinkframe.php?user_id={$_GET['user_id']}&link={$_GET['link']}&getparams={$getparams}&linkname={$_GET['linkname']}\" \ > Log in user #{$_GET['user_id']} </a> </h2>";
 
  ?>
 

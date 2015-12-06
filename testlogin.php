@@ -11,7 +11,7 @@ $testcases = array();
 );*/
 $testcases[] = array(
     'request' =>  "login",
-    'username' => "Brandon",
+    'username' => "MrTester",
     'password' =>  "Garbage",
     'testname' =>  "Bad Password",
     'expectedstate' =>  "log in refused",
@@ -19,7 +19,7 @@ $testcases[] = array(
 );
 $testcases[] = array(
     'request' =>  "login",
-    'username' => "Brandon",
+    'username' => "MrTester",
     'testname' =>  "Password not supplied",
     'expectedstate' =>  "log in refused",
     'expectedid' =>  "Not Set"
@@ -34,7 +34,7 @@ $testcases[] = array(
 );
 $testcases[] = array(
     'request' =>  "signup",
-    'username' =>  "Brandon",
+    'username' =>  "MrTester",
     'password' =>  "doesntmatter",
     'testname' =>  "User Name Already Taken",
     'expectedstate' =>  "Sign up refused",
@@ -65,11 +65,11 @@ $testcases[] = array(
 );
 $testcases[] = array(
     'request' =>  "login",
-    'username' =>  "Brandon",
+    'username' =>  "MrTester",
     'password' =>  "password",
     'testname' =>  "Succsessfull login",
     'expectedstate' =>  "User is Logged in Succsessfully",
-    'expectedid' =>  "9"
+    'expectedid' =>  "23"
 );
 
  ?>

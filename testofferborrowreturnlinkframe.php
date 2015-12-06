@@ -21,7 +21,7 @@ if (isset($_GET['getparams'])) {
   $getparams = "";
 }
 
-echo " <a href = \"{$_GET['link']}?$getparams\">{$_GET['linkname']}</a> "
+echo "<h2> <a href = \"{$_GET['link']}?$getparams\">{$_GET['linkname']}</a> </h2>"
 ?>
 </body>
 </html>

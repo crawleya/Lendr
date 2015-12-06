@@ -17,11 +17,11 @@ include 'login.php';
 
 
 
-echo "<br><br>user_id expected: {$_GET['expectedid']}   user_id:";
+echo "<br><br><h4>user_id expected: {$_GET['expectedid']}   user_id:";
 if (!isset($_SESSION['user_id'])){
     echo "not set <br>";
 } else {
-    echo "{$_SESSION['user_id']} <br>";
+    echo "{$_SESSION['user_id']} </h4><br>";
 }
 
 ?>
