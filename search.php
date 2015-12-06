@@ -1,7 +1,8 @@
 <?php
 //error reporting. comment out once code is working
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+
 //start session to check for valid login. if not, redirect to login page
 session_start();
 //$_SESSION['user_id'] = 5; //For testing only prior to login page creation
