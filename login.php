@@ -103,7 +103,7 @@ function success($mysqli,$username,$userTable){
                 <div class="content">
                     <br></br>
               <fieldset class="field_container">
-                        <legend> You have succsesfull logged in.  Use links above to Search, Offer or Borrow Items, or join a Group </legend>
+                        <legend> You have successfully logged in.  Use links above to Search, Offer or Borrow Items, or join a Group </legend>
                     </fieldset>
               <br></br>
                 </div><!-- content -->    
