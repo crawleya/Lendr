@@ -34,8 +34,8 @@ if (!isset($_SESSION['user_id'])) {
           <ul>
             <li><a href="search.php">Search</a></li>
             <li><a href="groups.php">Groups</a></li>
-            <li><a href="offer_item.php">Offer item</a></li>
-            <li><a href="user_items.php">User items</a></li>
+            <li><a href="offer_item.php">Offer Item</a></li>
+            <li><a href="user_items.php">Borrowed Items</a></li>
             <ul>
               <li style="background:#3333ff;"><a href="login.php?request=logout">Logout</a></li>
             </ul>
