@@ -5,6 +5,20 @@
 </head>
 <body>
 
+<h2> Lendr Acceptance Tests </h2>
+This is a test of the functionality of Lendr User Stories that were prioritized during the two development cycles available
+
+<br><br>
+<h3>Instuctions for use</h3>
+becuase this demonstrates the interaction of two users it must be controlled which test user is logged in before displaying a page
+<br> So please click the link to log in the appropriate user and then click the link to proceed to the Lendr page
+<br>
+<br> Perform these tests in order and perform the necesary inputs: offer item, borrow item, return item
+<br> Observing at each step if the page is in the "Expected State"
+<br> Finally delete the newly offered item to keep the test repeatable
+
+<br><br>
+
 <?php  
 
 //log in mrtester
@@ -12,13 +26,12 @@ session_start();
 $_SESSION['user_id'] = 23;
 
 echo "<h3 class=\"testname\"> TEST: Offer a New Item </h3> 
-MrTester is currently logged in
 <div class=\"frameheader\"> USER STEPS:
 <ul>
 <li> Offer a new Item
 </u>
  </div>
-<iframe class = \"offertestframe\" src = \"offer_item.php\"></iframe>
+<iframe class = \"offertestframe\" src = \"testofferborrowreturnloginframe.php?user_id=23&link=offer_item.php&linkname=See MrTesters offered items\"></iframe>
 <div class=\"framefooter\"> 
 <span class=\"expectedstate\">Expected State:</span>
 <ul>
