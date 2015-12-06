@@ -75,15 +75,42 @@ function success($mysqli,$username,$userTable){
         header('Content-Type: text/html');
         ?>
 
-        <!DOCTYPE html>
         <html>
         <head>
-            <title>Login for Lender</title>
+        <meta charset="utf-8">
+        <title>Lendr</title>
+        <link rel="stylesheet" href="css/final-style.css" />
+        <script type="text/javascript" src="js/final-jscript.js"></script>
         </head>
+
         <body>
-        You have successfully logged in, please navigate to the Lendr feature you want to use
+            <div class="container">
+                <div class="header">
+                </div><!-- header -->
+                <h1 class="main_title">Welcome to Lendr
+                  <ul>
+                    <li><a href="search.php">Search</a></li>
+                    <li><a href="groups.php">Groups</a></li>
+                    <li><a href="offer_item.php">Offer item</a></li>
+                    <li><a href="user_items.php">User items</a></li>
+                    <ul>
+                      <li style="background:#3333ff;"><a href="login.php?request=logout">Logout</a></li>
+                    </ul>
+
+                  </ul>
+                </h1>
+
+                <div class="content">
+                    <br></br>
+              <fieldset class="field_container">
+                        <legend> You have succsesfull logged in.  Use links above to Search, Offer or Borrow Items, or join a Group </legend>
+                    </fieldset>
+              <br></br>
+                </div><!-- content -->    
+            </div><!-- container -->
         </body>
         </html>
+
 
         <?php
     }

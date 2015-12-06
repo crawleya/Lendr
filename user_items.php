@@ -31,11 +31,16 @@ if (!isset($_SESSION['user_id'])) {
         <div class="header">
         </div><!-- header -->
         <h1 class="main_title">Welcome to Lendr
+          <ul>
+            <li><a href="search.php">Search</a></li>
+            <li><a href="groups.php">Groups</a></li>
+            <li><a href="offer_item.php">Offer item</a></li>
+            <li><a href="user_items.php">User items</a></li>
+            <ul>
+              <li style="background:#3333ff;"><a href="login.php?request=logout">Logout</a></li>
+            </ul>
 
-        <form action="login.php" method="POST" class="logout_form">
-          <button class="logout_button" name="request" value="logout" type="submit">Logout</button>
-        </form> 
-
+          </ul>
         </h1>
 
         <div class="content">
