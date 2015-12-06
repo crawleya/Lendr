@@ -21,14 +21,17 @@ body {
 }
 .header {
 	padding: 10px;
+	
 }
 .main_title {
 	background: #ff6600;
 	color: #ffffff;
 	padding: 10px;
-	font-size: 24px;
-	line-height: 20px;
+	font-size: 26px;
+	line-height: normal;
 }
+
+
 .subtitle {
 	font-weight: bold;
 	font-size: 20px;
@@ -134,7 +137,10 @@ body {
 	background: #ff6600;
 }
 .logout_button {
+	position: absolute;
 	float: right;
+	margin-right: 0;
+	margin-top: -20px;
 	height: 27px;
 	width: 80px;
 	padding: 3px;
@@ -147,13 +153,37 @@ body {
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
+
 }
 .logout_button:hover {
+	background: #ff6600;
+}
+
+.nav_button {
+	position: relative;
+	left: -100px; 
+	height: 27px;
+	width: 200px;
+	padding: 3px;
+	border: 2px solid #000099;
+	border-radius: 5px;
+	background: #6666ff;
+	margin-right: 15 px;
+	margin-left: 200px;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+.nav_button:hover {
 	background: #ff6600;
 }
 .logout_form{
 	float: right;
 	padding: 0px;
+	
 }
 .table_list {
 	width: 100%;
@@ -188,8 +218,42 @@ body {
 	float: right;
 }
 
-#message {
-	font-size: large;
-    color: red;
-    font-family: monospace;
+
+
+ul {
+    list-style-type: none;
+
+    padding: 0;
+
+    margin-bottom: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-size: 20px;
+}
+
+li {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+    float:right;
+
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 11px 13px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
 }

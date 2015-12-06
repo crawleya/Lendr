@@ -91,11 +91,11 @@ function success($mysqli,$username,$userTable){
 
 
 //first navigation to page
-if (!isset($_POST['request'])){
+if (!isset($_REQUEST['request'])){
     displayform();
 }
 
-if ($_POST['request'] == 'logout'){
+if ($_REQUEST['request'] == 'logout'){
   session_unset();
   session_destroy();
 
