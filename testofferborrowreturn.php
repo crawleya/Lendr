@@ -11,7 +11,6 @@
 session_start();
 $_SESSION['user_id'] = 23;
 
-
 // including the database credentials
 include('stored_info.php');
 //connect to database
@@ -45,10 +44,9 @@ MrTester is currently logged in
 <iframe src = \"testofferborrowreturnlinkframe.php?link=offer_item.php&linkname=MrTestrs items after adding new item\"></iframe>
 ";*/
 
-session_start();
-$_SESSION['user_id'] = 24;
 
 $getparams=urlencode("itemname=&grouplist%5B%5D=19");
+
 
 echo "<h3 class=\"testname\"> TEST: Borrow Item </h3>
 MissesTester is now logged in <br>
@@ -63,10 +61,11 @@ MissesTester is now logged in <br>
 
 <div class=\"frameheader\"> USER STEPS:
 <ul>
+<li> Log in MissesTester
 <li> Borrow MrTester's New Item
 </u>
  </div>
-<iframe class = \"offertestframe\" src = \"testofferborrowreturnlinkframe.php?link=search.php&getparams={$getparams}&linkname=search for items in mr testers club group\"></iframe>
+<iframe class = \"offertestframe\" src = \"testofferborrowreturnloginframe.php?user_id=24&link=search.php&getparams={$getparams}&linkname=search for items in mr testers club group\"></iframe>
 <div class=\"framefooter\"> 
 <span class=\"expectedstate\">Expected State:</span>
 <ul>

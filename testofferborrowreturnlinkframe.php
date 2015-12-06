@@ -8,11 +8,17 @@
 
 
 <?php 
+
+session_start();
+$_SESSION['user_id'] = $_GET['user_id'];
+
+
 if (isset($_GET['getparams'])) {
   $getparams = urldecode($_GET['getparams']);
 } else {
   $getparams = "";
 }
+
 echo " <a href = \"{$_GET['link']}?$getparams\">{$_GET['linkname']}</a> "
 ?>
 </body>

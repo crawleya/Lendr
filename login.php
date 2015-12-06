@@ -91,11 +91,11 @@ function success($mysqli,$username,$userTable){
 
 
 //first navigation to page
-if (!isset($_REQUEST['request'])){
+if (!isset($_POST['request'])){
     displayform();
 }
 
-if ($_REQUEST['request'] == 'logout'){
+if ($_POST['request'] == 'logout'){
   session_unset();
   session_destroy();
 
@@ -103,13 +103,13 @@ if ($_REQUEST['request'] == 'logout'){
 }
 
 //check that user and pass provided //if request is set
-if( !isset($_REQUEST['username']) || !$_REQUEST['username'] 
-        || !isset($_REQUEST['password']) || !$_REQUEST['password'] ){
+if( !isset($_POST['username']) || !$_POST['username'] 
+        || !isset($_POST['password']) || !$_POST['password'] ){
 
     displayform("username and password must be provided");
 }
 
-if( !($_REQUEST['request'] == 'login'  || $_REQUEST['request'] == 'signup' )){
+if( !($_POST['request'] == 'login'  || $_POST['request'] == 'signup' )){
   displayform("We cannot perform that action right now");
 }
 
@@ -126,13 +126,13 @@ $userTable = "User";
 
 //check if username exists
 $usrInStmt = $mysqli->prepare("SELECT COUNT(*) FROM $userTable WHERE username = ?");
-$usrInStmt->bind_param("s", $_REQUEST['username']);
+$usrInStmt->bind_param("s", $_POST['username']);
 $usrInStmt->execute();
 $usrInStmt->bind_result($userExists);
 $usrInStmt->fetch();
 $usrInStmt->close();
 
-if($_REQUEST['request'] == 'login'){
+if($_POST['request'] == 'login'){
     //check that user is in database
     if(!$userExists){
       displayform("We dont have a user with that name. Please create account first.");
@@ -140,21 +140,21 @@ if($_REQUEST['request'] == 'login'){
     //check that password matches what we have in database
     //retrieve has from database
     $getHash = $mysqli->prepare("SELECT password FROM $userTable WHERE username = ?");
-    $getHash->bind_param("s",$_REQUEST['username']);
+    $getHash->bind_param("s",$_POST['username']);
     $getHash->execute();
     $getHash->bind_result($hash);
     $getHash->fetch();
     $getHash->close();
     //PLEASE NOTE: the database stored string includes algo, random salt, and hash
-    if(password_verify($_REQUEST['password'],$hash)){
+    if(password_verify($_POST['password'],$hash)){
 
-        success($mysqli,$_REQUEST['username'],$userTable); 
+        success($mysqli,$_POST['username'],$userTable); 
 
     } else {
         displayform("Incorect Password");
     }
 
-} else if ($_REQUEST['request'] == 'signup'){
+} else if ($_POST['request'] == 'signup'){
     if($userExists) {
 
         displayform("That user name is already taken");
@@ -162,24 +162,24 @@ if($_REQUEST['request'] == 'login'){
     }
 
     //do we want min pass length,  if used uncommnet global variable up above
-/*    if(strlen($_REQUEST['password']) < $minPassLength) {
+/*    if(strlen($_POST['password']) < $minPassLength) {
         echo "Password must be at least $minPassLength long";
         exit();
     }*/
 
     //PLEASE NOTE: the returned string includes algo, random salt, and hash
-    $hashp = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
+    $hashp = password_hash($_POST['password'], PASSWORD_DEFAULT);
     //add user to database
     $addUser = $mysqli->prepare("INSERT INTO 
         $userTable ( username, password) 
         VALUES (?,?)");
-    $addUser->bind_param("ss", $_REQUEST['username'], $hashp);
+    $addUser->bind_param("ss", $_POST['username'], $hashp);
     if(!$addUser->execute()){
         displayform("We cannot perform that action right now");
     }
     $addUser->close();
 
-    success($mysqli,$_REQUEST['username'],$userTable);
+    success($mysqli,$_POST['username'],$userTable);
 }
 
 
